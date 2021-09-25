@@ -19,20 +19,27 @@ class NewUserForm(UserCreationForm):
 	class Meta:
 		model = User
 		fields = ("username", "email", "password1", "password2")
+	def clean_email(self):
+		email=self.cleaned_data['email']
+		print(email)
+		if '.@gmail.com' not in email  :
+			raise ValidationError('Email is Invalid')
+		return email
+
 	def clean(self):
 		data=self.cleaned_data
-		username=data.get("username")
-		password1=data.get("password")
-		password2=data.get("password1")
-		user=User.objects.filter(username=username)
-		if user.exists():
-			raise ValidationError(message='username already')
-      
-
-		if password1 ==password2:
-			raise ValidationError(message='password does not match')
+		username=data.get('username')
+		password1=data.get('password1')
+		password2=data.get('password2')
+		users=User.objects.filter(username__icontains=username)
+		if users.exists():
+			raise ValidationError('users already exists')
+		if len(username)< 5:
+			raise ValidationError('username is too short')
+		if password1 != password2:
+			raise ValidationError('password does not match')
 		return data
-  
+
      
 	def save(self, commit=True):
 		user = super(NewUserForm, self).save(commit=False)
@@ -41,9 +48,8 @@ class NewUserForm(UserCreationForm):
 			user.save()
 		return user   
 
-class UserInputForm(forms.Form):
-	input_values=forms.CharField(label=('Input values'))
-	search_values=forms.IntegerField(label=('Search values'))
+
+
 
 
 class TestUserInputForm(forms.Form):

@@ -2,7 +2,6 @@
 body{
   margin: 0px;
   padding: 0px;
-  
 }
 
 .container {
@@ -17,4 +16,8 @@ body{
     width: 40%;
     
 }
-  
+
+#nav-id{
+  background-color:lightcoral;
+}
+
