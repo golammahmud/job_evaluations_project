@@ -1,5 +1,5 @@
-                                                      Job Evaluation Project 
-                                                         Ame Coding Pari Na
+                                                    Job Evaluation Project 
+                                                       Ame Coding Pari Na
                                                          
                                                          
                                                          
@@ -23,7 +23,7 @@ To access this website you need to register yourself .then login and input your 
 
                                                         JWT Token Based api
                                                         
-I created simplejwt token based api .for getting all the inputs from data based .i used jwt globally in settings.py file .also I can get given users based inputs.to access this api you need to create access token and refresh token by given your username and password on postman or use httpie .
+I created simplejwt token based api .for getting all the inputs from data based .i used jwt globally in settings.py file .also I can get given users based inputs.to access this api you need to create access token and refresh token by given your username and password on postman or use httpie  write http POST http://127.0.0.1:8000/api/ username=' your username' password=' your password' 
 After getting access token . to get all the input values use http://127.0.0.1:8000/api/user-based-inputs/
 Get users based all the input use this url 
 http://127.0.0.1:8000/api/all-userinputs/
